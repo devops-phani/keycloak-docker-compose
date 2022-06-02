@@ -5,8 +5,8 @@ services:
     volumes:
       - ./postgres:/var/lib/postgresql/data
     restart: 'always'
-    # ports:
-    #   - 5432:5432
+#     ports:
+#       - 5432:5432
     environment:
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: password
@@ -23,10 +23,10 @@ services:
     volumes:
       - ./envs:/vault/envs
       - ./start.sh:/keycloak/start.sh
-      - ./certs:/certs
+#       - ./certs:/certs
     environment:
-      KC_HTTPS_CERTIFICATE_FILE: /certs/cert.pem
-      KC_HTTPS_CERTIFICATE_KEY_FILE: /certs/key.pem
+#       KC_HTTPS_CERTIFICATE_FILE: /certs/cert.pem
+#       KC_HTTPS_CERTIFICATE_KEY_FILE: /certs/key.pem
       KC_CACHE: ispn
       KC_DB: postgres
       KC_DB_URL_DATABASE: keycloak
