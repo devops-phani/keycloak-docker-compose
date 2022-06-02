@@ -1,0 +1,39 @@
+version: '3'
+services:
+  postgres:
+    image: 'postgres:alpine'
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    restart: 'always'
+    # ports:
+    #   - 5432:5432
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: keycloak
+      POSTGRES_HOST: postgres
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:18.0.0
+    ports:
+      - 8080:8080
+      - 8443:8443
+    entrypoint: /bin/bash
+    command: -c "/keycloak/start.sh"
+    volumes:
+      - ./envs:/vault/envs
+      - ./start.sh:/keycloak/start.sh
+      - ./certs:/certs
+    environment:
+      KC_HTTPS_CERTIFICATE_FILE: /certs/cert.pem
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /certs/key.pem
+      KC_CACHE: ispn
+      KC_DB: postgres
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_PORT: 5432
+      KC_HOSTNAME: keycloak.mydomain.com
+      KC_HOSTNAME_PATH: odic
+      KC_HTTP_RELATIVE_PATH: odic
+    depends_on:
+      - postgres
