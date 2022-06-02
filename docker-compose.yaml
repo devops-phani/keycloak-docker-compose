@@ -32,7 +32,7 @@ services:
       KC_DB_URL_DATABASE: keycloak
       KC_DB_URL_HOST: postgres
       KC_DB_URL_PORT: 5432
-      KC_HOSTNAME: keycloak.mydomain.com
+      KC_HOSTNAME: mylocal.keycloak.com
       KC_HOSTNAME_PATH: odic
       KC_HTTP_RELATIVE_PATH: odic
     depends_on:
