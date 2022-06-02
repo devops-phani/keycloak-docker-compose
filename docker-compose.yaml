@@ -23,8 +23,10 @@ services:
     volumes:
       - ./envs:/vault/envs
       - ./start.sh:/keycloak/start.sh
+# Uncomment below line if you have own ssl certificates
 #       - ./certs:/certs
     environment:
+# Uncomment below lines if you have own ssl certificates
 #       KC_HTTPS_CERTIFICATE_FILE: /certs/cert.pem
 #       KC_HTTPS_CERTIFICATE_KEY_FILE: /certs/key.pem
       KC_CACHE: ispn
