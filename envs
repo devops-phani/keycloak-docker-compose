@@ -1,0 +1,4 @@
+export KEYCLOAK_ADMIN_PASSWORD=admin
+export KEYCLOAK_ADMIN=admin
+export KC_DB=postgres
+export KC_DB_PASSWORD=password
