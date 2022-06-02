@@ -1,1 +1,1 @@
-# keycloak-ha
+# keycloak-docker-compose
